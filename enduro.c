@@ -3,13 +3,10 @@
 #include <time.h>   //usar para a função de randomizar número
 #include <stdbool.h>
 
-#ifdef _WIN32
-#include <windows.h> //funções de sleep e system clear na versão windows
-#include <conio.h>   //ler a entrada do teclado para sistema windows
-#else
+
 #include <unistd.h>  //função usleep e system clear
 #include <ncurses.h> //ler a entrada do teclado para sistemas LINUX
-#endif
+
 
 // definições para o tamanho da rua e para o máximo de inimigos na tela
 #define LARGURA_RUA 25
@@ -20,6 +17,7 @@
 #define CHAR_VAZIO ' '
 #define CHAR_SETA '>'
 
+//teste 1324
 // variáveis dos carros
 typedef struct
 {
@@ -227,6 +225,10 @@ void pontuacao()
         }
 
         meta_ultrapassagem = 45 + (dia * 15);
+
+        if (usleep_velocidade > 10000){
+            usleep_velocidade -= 5000;
+        }
     }
 
     if (dia % 2 == 0)
@@ -238,6 +240,7 @@ void pontuacao()
         noite = false;
     }
 }
+   
 
 // limpar o sistema
 void systemClear()
