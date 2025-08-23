@@ -3,10 +3,13 @@
 #include <time.h>   //usar para a função de randomizar número
 #include <stdbool.h>
 
-
+#ifdef _WIN32
+#include <windows.h> //funções de sleep e system clear na versão windows
+#include <conio.h>   //ler a entrada do teclado para sistema windows
+#else
 #include <unistd.h>  //função usleep e system clear
 #include <ncurses.h> //ler a entrada do teclado para sistemas LINUX
-
+#endif
 
 // definições para o tamanho da rua e para o máximo de inimigos na tela
 #define LARGURA_RUA 25
